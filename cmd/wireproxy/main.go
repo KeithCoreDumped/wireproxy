@@ -250,7 +250,9 @@ func main() {
 		return
 	}
 
-	lockNetwork(conf.Routines, info)
+	// Disable Landlock network restrictions to allow arbitrary
+	// TCP connections required by DIRECT proxy routing.
+	// lockNetwork(conf.Routines, info)
 
 	if isDaemonProcess {
 		os.Stdout, _ = os.Open(os.DevNull)
